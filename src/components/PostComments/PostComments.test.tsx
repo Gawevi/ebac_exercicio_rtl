@@ -7,4 +7,20 @@ describe('Teste para o componente PostComment', () => {
         render(<PostComment/>);
         expect(screen.getByText('Comentar')).toBeInTheDocument();
     });
+
+    test('Deve adicionar dois comentários à publicação', () => {
+        render(<Post />)
+
+        const textarea = screen.getByTestId('area de texto')
+        const botao = screen.getByTestId('btn-postar comentario')
+
+        fireEvent.change(textarea, { target: { value: 'Primeiro comentário' } })
+        fireEvent.click(botao)
+
+        fireEvent.change(textarea, { target: { value: 'Segundo comentário' } })
+        fireEvent.click(botao)
+
+        expect(screen.getByText('Primeiro comentário')).toBeInTheDocument()
+        expect(screen.getByText('Segundo comentário')).toBeInTheDocument()
+      });
 });
