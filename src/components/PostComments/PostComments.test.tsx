@@ -12,7 +12,7 @@ describe('Teste para o componente PostComment', () => {
         render(<Post />)
 
         const textarea = screen.getByTestId('area de texto')
-        const botao = screen.getByTestId('btn-postar comentario')
+        const botao = screen.getByTestId('btn-comentar')
 
         fireEvent.change(textarea, { target: { value: 'Primeiro comentário' } })
         fireEvent.click(botao)
